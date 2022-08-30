@@ -3,12 +3,13 @@ import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-    uri: 'https://api.spacex.land/graphql',
-    cache: new InMemoryCache()
+	// uri: 'http://localhost:5547/graphql/',
+	uri: 'https://flyby-gateway.herokuapp.com/',
+	cache: new InMemoryCache(),
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <ApolloProvider client={client}>
-        <App />
-    </ApolloProvider>
+	<ApolloProvider client={client}>
+		<App />
+	</ApolloProvider>
 );
