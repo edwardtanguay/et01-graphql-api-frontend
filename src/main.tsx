@@ -3,11 +3,11 @@ import App from './App';
 import { createClient, Provider } from 'urql';
 
 const client = createClient({
-  url: 'http://api.spacex.land/graphql'
+  url: 'http://localhost:5547/graphql'
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <ApolloProvider client={client}>
+    <Provider value={client}>
         <App />
-    </ApolloProvider>
+    </Provider>
 );

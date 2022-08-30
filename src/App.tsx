@@ -1,26 +1,29 @@
 import './App.scss';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from 'urql';
 
-const QUERY = gql`
-	{
-		launchesPast(limit: 10) {
-			id
-			mission_name
-		}
+const query = `
+	query {
+		hello
 	}
 `;
 
 function App() {
-	const { data, loading, error } = useQuery(QUERY);
+	const [result] = useQuery({ query });
+	const { data, fetching} = result;
 
+	if (!fetching) {
+		console.log(data);
+	}
+	
 	return (
 		<div className="App">
 			<h1>GraphQL Test - Frontend</h1>
-			<ul>
-				{data.launchesPast.map((launch:any, i: number) => (
-					<li key={i}>{launch.mission_name}</li>
-				))}
-			</ul>
+			{fetching && (
+				<div>loading...</div>
+			)}
+			{!fetching && (
+				<div>{data.hello}</div>
+			)}
 		</div>
 	);
 }
