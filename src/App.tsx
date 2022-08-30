@@ -1,8 +1,8 @@
 import './App.scss';
 import { useQuery, gql } from '@apollo/client';
 
-// const QUERY = gql`
-// 	{
+// const GET_DATA = gql`
+// 	query hello {
 // 		hello
 // 	}
 // `;
@@ -19,16 +19,18 @@ const GET_LOCATIONS = gql`
 
 function App() {
 	const { loading, error, data } = useQuery(GET_LOCATIONS);
+	console.log('nnn');
 	console.log(data);
+	console.log('nnn');
 
 	return (
 		<div className="App">
 			<h1>GraphQL Test - Frontend</h1>
 
 			<ul>
-				{data.locations.map((location: any) => (
+				{/* {data.locations.map((location: any) => (
 					<li key={location.id}>{location.name}</li>
-				))}
+				))} */}
 			</ul>
 		</div>
 	);
