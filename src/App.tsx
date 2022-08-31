@@ -8,6 +8,9 @@ const QUERY = gql`
 		books,
 		employees {
 			lastName
+		},
+		slowEmployees {
+			firstName
 		}
 	}
 `;
@@ -18,12 +21,16 @@ function App() {
 	return (
 		<div className="App">
 			<h1>GraphQL Test - Frontend</h1>
+			{loading && (
+				<div>loading...</div>
+			)}
 			{!loading && (
 				<>
 					<div>{data.hello}</div>
 					<div>{data.message}</div>
 					<div>{data.books.map((book: any) => book).join(', ')}</div>
 					<div>{data.employees.map((emp: any) => emp.lastName).join(', ')}</div>
+					<div>{data.slowEmployees.map((emp: any) => emp.firstName).join(', ')}</div>
 				</>
 			)}
 		</div>
